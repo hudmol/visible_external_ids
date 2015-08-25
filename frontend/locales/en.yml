@@ -1,0 +1,6 @@
+en:
+  plugins:
+    visible_external_ids:
+      _plural: External IDs
+      source: Source
+      external_id: External ID
