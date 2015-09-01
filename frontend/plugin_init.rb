@@ -1,3 +1,15 @@
+if AppConfig.has_key?(:show_external_ids)
+  # this plugin is superceded by the core changes controlled
+  # by the AppConfig setting :show_external_ids
+
+  puts "***"
+  puts "The plugin visible_external_ids has been superceded."
+  puts "To view external ids in the frontend, set `AppConfig[:show_external_ids] = true`"
+  puts "and remove 'visible_external_ids' from AppConfig[:plugins]"
+
+  raise "plugin visible_external_ids no longer needed"
+end
+
 Rails.application.config.after_initialize do
   PluginHelper.class_eval do
     alias_method :sidebar_plugins_for_pre_visible_external_ids, :sidebar_plugins_for
