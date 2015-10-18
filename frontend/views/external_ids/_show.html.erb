@@ -1,23 +1,29 @@
 <section id="visible_external_ids" class="subrecord-form-dummy">
   <h3><%= I18n.t("plugins.visible_external_ids._plural")%></h3>
   <div class="subrecord-form-container">
-    <div class="subrecord-form-fields">
-      <table class="table table-striped table-bordered table-condensed table-hover token-list">
-        <thead>
-        <tr>
-          <td><%= I18n.t("plugins.visible_external_ids.source") %></td>
-          <td><%= I18n.t("plugins.visible_external_ids.external_id") %></td>
-        </tr>
-        </thead>
-        <tbody>
-          <% ASUtils.wrap(external_ids).each do |external_id| %>
-            <tr>
-              <td><%= external_id['source'] %></td>
-              <td><%= external_id['external_id'] %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+    <% ASUtils.wrap(external_ids).each do |external_id| %>
+      <div class="subrecord-form-fields">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">
+            <%= I18n.t("plugins.visible_external_ids.source") %>
+          </label>
+          <div class="col-sm-9">
+            <div class="controls label-only">
+              <%= external_id['source'] %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">
+            <%= I18n.t("plugins.visible_external_ids.external_id") %>
+          </label>
+          <div class="col-sm-9">
+            <div class="controls label-only">
+              <%= external_id['external_id'] %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </section>
