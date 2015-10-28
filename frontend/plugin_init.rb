@@ -10,6 +10,7 @@ if AppConfig.has_key?(:show_external_ids)
   raise "plugin visible_external_ids no longer needed"
 end
 
+
 Rails.application.config.after_initialize do
   PluginHelper.class_eval do
 
@@ -25,4 +26,18 @@ Rails.application.config.after_initialize do
     end
 
   end
+
+
+  ApplicationHelper.class_eval do
+    alias_method :render_aspace_partial_pre_visible_external_ids, :render_aspace_partial
+    def render_aspace_partial(args)
+
+      if !args[:locals].blank? && !args[:locals][:name].blank? && args[:locals][:name] == "external_ids"
+        args[:locals][:hidden] = false
+      end
+
+      render_aspace_partial_pre_visible_external_ids(args);
+    end
+  end
+
 end
