@@ -12,18 +12,18 @@ end
 
 Rails.application.config.after_initialize do
   PluginHelper.class_eval do
-    alias_method :sidebar_plugins_for_pre_visible_external_ids, :sidebar_plugins_for
-    def sidebar_plugins_for(record)
-      result = sidebar_plugins_for_pre_visible_external_ids(record)
-      if Array(record["external_ids"]).length > 0
-        menu_item = ""
-        menu_item << "<li><a href='#visible_external_ids'>"
-        menu_item << I18n.t("plugins.visible_external_ids._plural")
-        menu_item << '<span class="glyphicon glyphicon-chevron-right"></span></a></li>'
-        result = result + menu_item.html_safe
-      end
-      result.html_safe
-    end
+#    alias_method :sidebar_plugins_for_pre_visible_external_ids, :sidebar_plugins_for
+#    def sidebar_plugins_for(record)
+#      result = sidebar_plugins_for_pre_visible_external_ids(record)
+#      if Array(record["external_ids"]).length > 0
+#        menu_item = ""
+#        menu_item << "<li><a href='#external_ids'>"
+#        menu_item << I18n.t("external_id._plural")
+#        menu_item << '<span class="glyphicon glyphicon-chevron-right"></span></a></li>'
+#        result = result + menu_item.html_safe
+#      end
+#      result.html_safe
+#    end
 
     alias_method :show_plugins_for_pre_visible_external_ids, :show_plugins_for
     def show_plugins_for(record, context)
@@ -36,15 +36,20 @@ Rails.application.config.after_initialize do
       result
     end
 
-    alias_method :form_plugins_for_pre_visible_external_ids, :form_plugins_for
-    def form_plugins_for(jsonmodel_type, context)
-      result = form_plugins_for_pre_visible_external_ids(jsonmodel_type, context)
+#    alias_method :form_plugins_for_pre_visible_external_ids, :form_plugins_for
+#    def form_plugins_for(jsonmodel_type, context)
+#      result = form_plugins_for_pre_visible_external_ids(jsonmodel_type, context)
 
-      if !ASUtils.wrap(context.obj["external_ids"]).empty?
-        result << render_aspace_partial(:partial => "external_ids/show", :locals => {:external_ids => ASUtils.wrap(context.obj["external_ids"]), :obj => context.obj})
-      end
+#      result << render_aspace_partial(:partial => "shared/subrecord_form",
+#                                      :locals => {:form => context, :name => 'external_ids',
+#                                        :cardinality => :zero_to_many, :plugin => true})
 
-      result
-    end
+
+#      if !ASUtils.wrap(context.obj["external_ids"]).empty?
+#        result << render_aspace_partial(:partial => "external_ids/edit", :locals => {:external_ids => ASUtils.wrap(context.obj["external_ids"]), :form => context})
+#      end
+
+#      result
+#    end
   end
 end

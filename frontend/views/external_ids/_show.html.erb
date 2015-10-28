@@ -1,11 +1,11 @@
-<section id="visible_external_ids" class="subrecord-form-dummy">
-  <h3><%= I18n.t("plugins.visible_external_ids._plural")%></h3>
+<section id="external_ids" class="subrecord-form-dummy">
+  <h3><%= I18n.t("external_id._plural")%></h3>
   <div class="subrecord-form-container">
     <% ASUtils.wrap(external_ids).each do |external_id| %>
       <div class="subrecord-form-fields">
         <div class="form-group">
           <label class="col-sm-2 control-label">
-            <%= I18n.t("plugins.visible_external_ids.source") %>
+            <%= I18n.t("external_id.source") %>
           </label>
           <div class="col-sm-9">
             <div class="controls label-only">
@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
           <label class="col-sm-2 control-label">
-            <%= I18n.t("plugins.visible_external_ids.external_id") %>
+            <%= I18n.t("external_id.external_id") %>
           </label>
           <div class="col-sm-9">
             <div class="controls label-only">
