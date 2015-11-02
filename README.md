@@ -24,7 +24,12 @@ maintenance and potential code conflicts.
 We've delivered a pull-request to the core team which will deliver the same behaviours 
 but in a more sustainable way - https://github.com/archivesspace/archivesspace/pull/258.  
 
-If these changes are accepted and released, this plugin will no longer be required (beware
-an exception  has been added to notify you when this time has come).  To migrate to the 
-new behaviour, first remove `visible_external_ids` from `AppConfig[:plugins]` and then set 
-`AppConfig[:show_external_ids] = true`. 
+These changes have been accepted and released in AS, so this plugin will no longer
+be required (beware an exception  has been added to notify you when this time has come).
+To migrate to the new behaviour, first remove `visible_external_ids` from `AppConfig[:plugins]`
+and then set `AppConfig[:show_external_ids] = true`. 
+
+If you want to continue to allow admins to edit external_ids in AS version 1.4.x, please
+use the following plugin:
+
+    https://github.com/hudmol/editable_external_ids
